@@ -1,18 +1,23 @@
 <template>
     <div>
-        <div class="columns-2">
-            <div>
-                <img class="aspect-auto" width="50" src="/public/makakoIMGpng.png" />
+        <div class="columns-2 flex">
+            <div class="titleRef">
+                <img class="aspect-auto" src="/public/makakoIMGpng.png" />
             </div>
             <div>
-
+                <h1>{{ t('title') }}</h1>
             </div>
         </div>
-        <h1>Welcome to my aplication </h1>
-        <introduccion />
-        <p>Mis ma sinceras felicitaciones por llegar a este punto</p>
     </div>
 </template>
 <script setup>
+const { t } = useI18n()
+import { ref, onMounted } from 'vue'
+const titleRef = ref(null)
+const { $gsap } = useNuxtApp()
 
+
+onMounted(() => {
+    $gsap.to(titleRef.value, { opacity: 0, duration: 2 })
+})
 </script>
